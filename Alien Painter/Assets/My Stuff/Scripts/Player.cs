@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
@@ -11,6 +12,13 @@ public class Player : MonoBehaviour
 
     private bool grounded;
 
+    [SerializeField] GameObject pPaint;
+   
+    [SerializeField] GameObject firePoint;
+
+    private bool canFire = true;
+    [SerializeField] float timeBetweenShots;
+    float timer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +47,25 @@ public class Player : MonoBehaviour
             Rigidbody2D body = GetComponent<Rigidbody2D>();
             body.AddForce(new Vector3(0, jumpForce, 0));
             grounded = false;
+        }
+
+        // Shoot Timer 
+        if (!canFire)
+        {
+            timer += Time.deltaTime;
+            if (timer > timeBetweenShots)
+            {
+                canFire = true;
+                timer = 0;
+            }
+        }
+
+        // Shooting code
+        if (Input.GetButton("Fire1") && canFire)
+        {
+            canFire = false;
+            Instantiate(pPaint, firePoint.transform.position, Quaternion.identity);
+
         }
 
     }
