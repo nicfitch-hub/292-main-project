@@ -23,7 +23,7 @@ public class PinkPaint : MonoBehaviour
 
         Vector2 direction = ((crosshair.transform.position ) - transform.position).normalized;
 
-        Debug.Log(crosshair.transform.position);
+        
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 

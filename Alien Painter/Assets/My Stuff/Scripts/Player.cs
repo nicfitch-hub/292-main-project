@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] float speed = 1f;
     [SerializeField] float jumpForce = 10f;
+    [SerializeField] float pinkUpForce = 10f;
+    [SerializeField] float greenUpForce = 10f;
 
     private bool grounded;
 
@@ -16,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject gPaint;
 
     [SerializeField] GameObject firePoint;
+    [SerializeField] GameObject piviotPoint;
 
     private bool canFire = true;
     [SerializeField] float timeBetweenShots;
@@ -37,18 +40,18 @@ public class Player : MonoBehaviour
     {
         // Right and left movement
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             transform.position -= new Vector3(speed * Time.deltaTime, 0, 0);
         }
 
         // Jump
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && grounded)
+        if ((Input.GetKeyDown(KeyCode.UpArrow) && grounded) || (Input.GetKeyDown(KeyCode.W) && grounded))
         {
             Rigidbody2D body = GetComponent<Rigidbody2D>();
             body.AddForce(new Vector3(0, jumpForce, 0));
@@ -86,20 +89,50 @@ public class Player : MonoBehaviour
             {
                 canFire = false;
                 Instantiate(pPaint, firePoint.transform.position, Quaternion.identity);
+                if (piviotPoint.transform.rotation.eulerAngles.z > 255 && piviotPoint.transform.rotation.eulerAngles.z < 285)
+                {
+                    //light impulse and unground
+                    Rigidbody2D body = GetComponent<Rigidbody2D>();
+                    body.AddForce(new Vector3(0, pinkUpForce, 0));
+                    grounded = false;
+                }
+                else if (piviotPoint.transform.rotation.eulerAngles.z > 225 && piviotPoint.transform.rotation.eulerAngles.z < 315 && !grounded)  
+                {
+                    //light impulse
+                    Rigidbody2D body = GetComponent<Rigidbody2D>();
+                    body.AddForce(new Vector3(0, pinkUpForce, 0));
 
+                }
+                else 
+                {
+                    Debug.Log(piviotPoint.transform.rotation.eulerAngles.z);
+                } 
             }
         }
         else
         {
-            if (Input.GetButtonDown("Fire1") || (canFire && Input.GetButton("Fire1")) )
+            if (Input.GetButtonDown("Fire1") )  // code to maybe make it automatic, needs fixing:|| (canFire && Input.GetButton("Fire1"))// 
             {
                 canFire = false;
                 Instantiate(gPaint, firePoint.transform.position, Quaternion.identity);
+                if (piviotPoint.transform.rotation.eulerAngles.z > 255 && piviotPoint.transform.rotation.eulerAngles.z < 285)
+                {
+                    //big impulse and unground
+                    Rigidbody2D body = GetComponent<Rigidbody2D>();
+                    body.AddForce(new Vector3(0, greenUpForce, 0));
+                    grounded = false;
+                }
+                else if (piviotPoint.transform.rotation.eulerAngles.z > 225 && piviotPoint.transform.rotation.eulerAngles.z < 315 && !grounded)
+                {
+                    //big impulse
+                    Rigidbody2D body = GetComponent<Rigidbody2D>();
+                    body.AddForce(new Vector3(0, greenUpForce, 0));
+
+                }
 
             }
         }
      
-
         // Switch Weapons 
 
         if (Input.GetButtonDown("Jump"))
