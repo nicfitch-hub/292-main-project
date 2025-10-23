@@ -221,8 +221,10 @@ MonoBehaviour:
   speed: 7
   jumpForce: 600
   pPaint: {fileID: 6978059530617532052, guid: 5095c0297325d6b49af42fbd5df58afe, type: 3}
+  gPaint: {fileID: 87169728124387750, guid: 116d143d285b28c43b606914d53646fa, type: 3}
   firePoint: {fileID: 3594860969236358775}
   timeBetweenShots: 0.1
+  gTimeBetweenShots: 1
 --- !u!61 &322994304076773947
 BoxCollider2D:
   m_ObjectHideFlags: 0

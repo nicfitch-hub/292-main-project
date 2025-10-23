@@ -13,12 +13,18 @@ public class Player : MonoBehaviour
     private bool grounded;
 
     [SerializeField] GameObject pPaint;
-   
+    [SerializeField] GameObject gPaint;
+
     [SerializeField] GameObject firePoint;
 
     private bool canFire = true;
     [SerializeField] float timeBetweenShots;
+    [SerializeField] float gTimeBetweenShots;
     float timer = 0;
+    float gTimer = 0;
+
+    private bool pinkFire = true;
+
 
     // Start is called before the first frame update
     void Start()
@@ -53,19 +59,61 @@ public class Player : MonoBehaviour
         if (!canFire)
         {
             timer += Time.deltaTime;
-            if (timer > timeBetweenShots)
+            gTimer += Time.deltaTime;
+            if (pinkFire)
             {
-                canFire = true;
-                timer = 0;
+                if (timer > timeBetweenShots)
+                {
+                    canFire = true;
+                    timer = 0;
+                }
             }
+            else
+            {
+                if (gTimer > gTimeBetweenShots)
+                {
+                    canFire = true;
+                    gTimer = 0;
+                }
+            }
+            
         }
 
         // Shooting code
-        if (Input.GetButton("Fire1") && canFire)
+        if (pinkFire)
         {
-            canFire = false;
-            Instantiate(pPaint, firePoint.transform.position, Quaternion.identity);
+            if (Input.GetButton("Fire1") && canFire)
+            {
+                canFire = false;
+                Instantiate(pPaint, firePoint.transform.position, Quaternion.identity);
 
+            }
+        }
+        else
+        {
+            if (Input.GetButtonDown("Fire1") || (canFire && Input.GetButton("Fire1")) )
+            {
+                canFire = false;
+                Instantiate(gPaint, firePoint.transform.position, Quaternion.identity);
+
+            }
+        }
+     
+
+        // Switch Weapons 
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (pinkFire)
+            {
+                pinkFire = false;
+                gTimer = 10;
+            }
+            else
+            {
+                pinkFire = true;
+                timer = 10;
+            }
         }
 
     }
