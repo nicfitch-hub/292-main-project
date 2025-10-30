@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Player : MonoBehaviour
 {
@@ -12,7 +13,9 @@ public class Player : MonoBehaviour
     [SerializeField] float pinkUpForce = 10f;
     [SerializeField] float greenUpForce = 10f;
 
-    private bool grounded;
+    private bool grounded = false;
+    [SerializeField] float raylegnth;
+    [SerializeField] float gForce = 10f;
 
     [SerializeField] GameObject pPaint;
     [SerializeField] GameObject gPaint;
@@ -38,6 +41,20 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // Old gravity
+       // if (!GetGrounded())
+        //{
+          //  Rigidbody2D body = GetComponent<Rigidbody2D>();
+            //body.AddForce(new Vector3(0, -gForce, 0));
+        //}
+        //else
+        //{
+          //  Rigidbody2D body = GetComponent<Rigidbody2D>();
+           // body.velocity = Vector3.zero;
+        //}
+
+
         // Right and left movement
 
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
@@ -51,7 +68,12 @@ public class Player : MonoBehaviour
 
         // Jump
 
-        if ((Input.GetKeyDown(KeyCode.UpArrow) && grounded) || (Input.GetKeyDown(KeyCode.W) && grounded))
+          // transform.position
+        Debug.DrawRay(new Vector3(transform.position.x, transform.position.y - .5f, transform.position.z), Vector2.down * raylegnth, UnityEngine.Color.red);
+        Debug.DrawRay(new Vector3(transform.position.x + .5f, transform.position.y - .5f, transform.position.z), Vector2.down * raylegnth, UnityEngine.Color.red);
+        Debug.DrawRay(new Vector3(transform.position.x - .5f, transform.position.y - .5f, transform.position.z), Vector2.down * raylegnth, UnityEngine.Color.red);
+
+        if ((Input.GetKeyDown(KeyCode.UpArrow) && GetGrounded()) || (Input.GetKeyDown(KeyCode.W) && GetGrounded()))
         {
             Rigidbody2D body = GetComponent<Rigidbody2D>();
             body.AddForce(new Vector3(0, jumpForce, 0));
@@ -96,7 +118,7 @@ public class Player : MonoBehaviour
                     body.AddForce(new Vector3(0, pinkUpForce, 0));
                     grounded = false;
                 }
-                else if (piviotPoint.transform.rotation.eulerAngles.z > 225 && piviotPoint.transform.rotation.eulerAngles.z < 315 && !grounded)  
+                else if (piviotPoint.transform.rotation.eulerAngles.z > 225 && piviotPoint.transform.rotation.eulerAngles.z < 315 && !GetGrounded())  
                 {
                     //light impulse
                     Rigidbody2D body = GetComponent<Rigidbody2D>();
@@ -122,7 +144,7 @@ public class Player : MonoBehaviour
                     body.AddForce(new Vector3(0, greenUpForce, 0));
                     grounded = false;
                 }
-                else if (piviotPoint.transform.rotation.eulerAngles.z > 225 && piviotPoint.transform.rotation.eulerAngles.z < 315 && !grounded)
+                else if (piviotPoint.transform.rotation.eulerAngles.z > 225 && piviotPoint.transform.rotation.eulerAngles.z < 315 && !GetGrounded())
                 {
                     //big impulse
                     Rigidbody2D body = GetComponent<Rigidbody2D>();
@@ -147,6 +169,27 @@ public class Player : MonoBehaviour
                 pinkFire = true;
                 timer = 10;
             }
+        }
+
+    }
+
+    private bool GetGrounded()
+    {
+        if (Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y - .5f, transform.position.z), Vector2.down, raylegnth, LayerMask.GetMask("Ground")))
+        {
+            return true;
+        }
+        else if (Physics2D.Raycast(new Vector3(transform.position.x + .5f, transform.position.y - .5f, transform.position.z), Vector2.down, raylegnth, LayerMask.GetMask("Ground")))
+        {
+            return true;
+        }
+        else if (Physics2D.Raycast(new Vector3(transform.position.x - .5f, transform.position.y - .5f, transform.position.z), Vector2.down, raylegnth, LayerMask.GetMask("Ground")))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
 
     }
