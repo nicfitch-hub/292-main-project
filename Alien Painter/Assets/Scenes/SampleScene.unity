@@ -3802,7 +3802,7 @@ CompositeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4552,7 +4552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 467675009347944292, guid: c743c1377815988438f6f33b5d32a821, type: 3}
       propertyPath: m_GravityScale
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1182825760130511891, guid: c743c1377815988438f6f33b5d32a821, type: 3}
       propertyPath: m_Name
@@ -4560,11 +4560,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4673080927290044664, guid: c743c1377815988438f6f33b5d32a821, type: 3}
       propertyPath: gForce
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4673080927290044664, guid: c743c1377815988438f6f33b5d32a821, type: 3}
       propertyPath: raylegnth
-      value: 0.97
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4673080927290044664, guid: c743c1377815988438f6f33b5d32a821, type: 3}
       propertyPath: pinkUpForce
@@ -4573,6 +4573,10 @@ PrefabInstance:
     - target: {fileID: 4673080927290044664, guid: c743c1377815988438f6f33b5d32a821, type: 3}
       propertyPath: greenUpForce
       value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 4673080927290044664, guid: c743c1377815988438f6f33b5d32a821, type: 3}
+      propertyPath: sideRaylegnth
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

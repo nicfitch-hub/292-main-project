@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     private bool grounded = false;
     [SerializeField] float raylegnth;
+    [SerializeField] float sideRaylegnth;
     [SerializeField] float gForce = 10f;
 
     [SerializeField] GameObject pPaint;
@@ -57,21 +58,31 @@ public class Player : MonoBehaviour
 
         // Right and left movement
 
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.RightArrow) && CanRight() || Input.GetKey(KeyCode.D) && CanRight())
         {
             transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
         }
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftArrow) && CanLeft() || Input.GetKey(KeyCode.A) && CanLeft())
         {
             transform.position -= new Vector3(speed * Time.deltaTime, 0, 0);
         }
 
-        // Jump
+        //Raycasting tests
 
-          // transform.position
-        Debug.DrawRay(new Vector3(transform.position.x, transform.position.y - .5f, transform.position.z), Vector2.down * raylegnth, UnityEngine.Color.red);
-        Debug.DrawRay(new Vector3(transform.position.x + .5f, transform.position.y - .5f, transform.position.z), Vector2.down * raylegnth, UnityEngine.Color.red);
-        Debug.DrawRay(new Vector3(transform.position.x - .5f, transform.position.y - .5f, transform.position.z), Vector2.down * raylegnth, UnityEngine.Color.red);
+        // transform.position
+        // Debug.DrawRay(new Vector3(transform.position.x, transform.position.y - .5f, transform.position.z), Vector2.down * raylegnth, UnityEngine.Color.blue);
+        // Debug.DrawRay(new Vector3(transform.position.x + .5f, transform.position.y - .5f, transform.position.z), Vector2.down * raylegnth, UnityEngine.Color.blue);
+        // Debug.DrawRay(new Vector3(transform.position.x - .5f, transform.position.y - .5f, transform.position.z), Vector2.down * raylegnth, UnityEngine.Color.blue);
+
+        //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y - .3f, transform.position.z), Vector2.right * sideRaylegnth, UnityEngine.Color.red);
+        //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y - .95f, transform.position.z), Vector2.right * sideRaylegnth, UnityEngine.Color.red);
+        //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z), Vector2.right * sideRaylegnth, UnityEngine.Color.red);
+
+        //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y -.3f, transform.position.z), Vector2.left * sideRaylegnth, UnityEngine.Color.green);
+        //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y - .95f, transform.position.z), Vector2.left * sideRaylegnth, UnityEngine.Color.green);
+        //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z), Vector2.left * sideRaylegnth, UnityEngine.Color.green);
+
+        // Jump
 
         if ((Input.GetKeyDown(KeyCode.UpArrow) && GetGrounded()) || (Input.GetKeyDown(KeyCode.W) && GetGrounded()))
         {
@@ -192,6 +203,49 @@ public class Player : MonoBehaviour
             return false;
         }
 
+    }
+
+    private bool CanRight()
+    {
+        if (Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y - .3f, transform.position.z), Vector2.right, sideRaylegnth, LayerMask.GetMask("Ground")))
+        {
+
+            return false;
+        }
+        else if (Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y -.95f, transform.position.z), Vector2.right, sideRaylegnth, LayerMask.GetMask("Ground")))
+        {
+            return false;
+        }
+        else if (Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z), Vector2.right, sideRaylegnth, LayerMask.GetMask("Ground")))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+
+    private bool CanLeft()
+    {
+        if (Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y - .3f, transform.position.z), Vector2.left, sideRaylegnth, LayerMask.GetMask("Ground")))
+        {
+            
+            return false;
+        }
+        else if (Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y - .95f, transform.position.z), Vector2.left, sideRaylegnth, LayerMask.GetMask("Ground")))
+        {
+            return false;
+        }
+        else if (Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z), Vector2.left, sideRaylegnth, LayerMask.GetMask("Ground")))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
