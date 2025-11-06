@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
 
     private bool pinkFire = true;
 
+    private int yKeys = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -250,11 +252,17 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == ("Ground"))
-        {
-            grounded = true;
-        }
+       
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == ("yKey"))
+        {
+            Destroy(collision.gameObject);
+            yKeys += 1;
+            Debug.Log(yKeys);
+        }
 
     }
 

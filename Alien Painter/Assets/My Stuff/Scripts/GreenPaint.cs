@@ -5,6 +5,7 @@ using UnityEngine;
 public class GreenPaint : MonoBehaviour
 {
     [SerializeField] float paintSpeed = 1.0f;
+    [SerializeField] GameObject explosion;
     GameObject crosshair;
     private Rigidbody2D rbody;
     // Start is called before the first frame update
@@ -37,8 +38,9 @@ public class GreenPaint : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.layer == 6)
         {
+            Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 

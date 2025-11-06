@@ -40,7 +40,7 @@ public class PinkPaint : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.layer == 6)
         {
             Destroy(gameObject);
         }
