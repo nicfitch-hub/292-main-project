@@ -32,10 +32,18 @@ public class DestrutableTiles : MonoBehaviour
         Debug.Log(pos);
     }
 
+    public void TileDetector(Vector3Int pos)
+    {
+        GameObject SecWalls = GameObject.FindGameObjectWithTag("SecretGround");
+        tilemap = SecWalls.GetComponent<Tilemap>();
+        tilemap.SetTile(pos, null);
+        Debug.Log(pos);
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       // Debug.Log("COlin Hit");
+       Debug.Log("COlin Hit");
        // if (collision.gameObject.tag == ("Explosion"))
        // {
        //     Debug.Log("Ex Hit");

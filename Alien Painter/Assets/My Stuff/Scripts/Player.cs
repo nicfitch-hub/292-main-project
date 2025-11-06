@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
     private bool pinkFire = true;
 
     private int yKeys = 0;
+    private int pAmmo = 50;
+    private int gAmmo = 4;
 
 
     // Start is called before the first frame update
@@ -120,10 +122,11 @@ public class Player : MonoBehaviour
         // Shooting code
         if (pinkFire)
         {
-            if (Input.GetButton("Fire1") && canFire)
+            if (Input.GetButton("Fire1") && canFire && pAmmo > 0)
             {
                 canFire = false;
                 Instantiate(pPaint, firePoint.transform.position, Quaternion.identity);
+                pAmmo -= 1;
                 if (piviotPoint.transform.rotation.eulerAngles.z > 255 && piviotPoint.transform.rotation.eulerAngles.z < 285)
                 {
                     //light impulse and unground
@@ -146,10 +149,11 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Fire1") )  // code to maybe make it automatic, needs fixing:|| (canFire && Input.GetButton("Fire1"))// 
+            if (Input.GetButtonDown("Fire1") && gAmmo > 0)  // code to maybe make it automatic, needs fixing:|| (canFire && Input.GetButton("Fire1"))// 
             {
                 canFire = false;
                 Instantiate(gPaint, firePoint.transform.position, Quaternion.identity);
+                gAmmo -= 1;
                 if (piviotPoint.transform.rotation.eulerAngles.z > 255 && piviotPoint.transform.rotation.eulerAngles.z < 285)
                 {
                     //big impulse and unground
@@ -263,7 +267,29 @@ public class Player : MonoBehaviour
             yKeys += 1;
             Debug.Log(yKeys);
         }
+        
 
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == ("pPool"))
+        {
+            pAmmo = 50;
+        }
+        else if (collision.gameObject.tag == ("gPool"))
+        {
+            if (gAmmo < 4)
+            {
+                gAmmo = 4;
+            }
+            Debug.Log(gAmmo);
+        }
+    }
+
+
+
+
+
 
 }
