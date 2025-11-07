@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3612454379320953240}
   m_Layer: 0
   m_Name: PinkPaint
-  m_TagString: Untagged
+  m_TagString: pShot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 0.90188676, g: 0.08678531, b: 0.69930345, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paintSpeed: 10
+  SecretWalls: {fileID: 892542769766205718, guid: 27dc4116e8819f740b9242e0f6f9509a, type: 3}
+  Grid: {fileID: 9179212917871356351, guid: d4815d43a304e5c4aa0881b17858c9de, type: 3}
 --- !u!50 &-846119588581735313
 Rigidbody2D:
   serializedVersion: 4

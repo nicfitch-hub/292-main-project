@@ -9,6 +9,9 @@ TagManager:
   - yKey
   - Explosion
   - SecretGround
+  - pPool
+  - gPool
+  - pShot
   layers:
   - Default
   - TransparentFX

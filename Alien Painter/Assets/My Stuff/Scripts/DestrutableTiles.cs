@@ -7,6 +7,7 @@ using static UnityEditor.PlayerSettings;
 public class DestrutableTiles : MonoBehaviour
 {
     Tilemap tilemap;
+    [SerializeField] TileBase tile;
     
     // Start is called before the first frame update
     void Start()
@@ -36,13 +37,15 @@ public class DestrutableTiles : MonoBehaviour
     {
         GameObject SecWalls = GameObject.FindGameObjectWithTag("SecretGround");
         tilemap = SecWalls.GetComponent<Tilemap>();
-        tilemap.SetTile(pos, null);
+        tilemap.SetTile(pos, tile);
         Debug.Log(pos);
     }
 
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+
        Debug.Log("COlin Hit");
        // if (collision.gameObject.tag == ("Explosion"))
        // {
@@ -50,14 +53,14 @@ public class DestrutableTiles : MonoBehaviour
        //     Vector3 hitPos = Vector3.zero;
        //     foreach (ContactPoint2D hit in collision.contacts)
        //     {
-        //        hitPos.x = hit.point.x + hit.normal.x;
-        //        hitPos.y = hit.point.y + hit.normal.y;
-         //       tilemap.SetTile(tilemap.WorldToCell(hitPos), null);
+       //        hitPos.x = hit.point.x + hit.normal.x;
+       //        hitPos.y = hit.point.y + hit.normal.y;
+       //       tilemap.SetTile(tilemap.WorldToCell(hitPos), null);
        //     }
 
             //tilemap.SetTile(transform.position, null);
 
-        //}
+            //}
 
     }
 

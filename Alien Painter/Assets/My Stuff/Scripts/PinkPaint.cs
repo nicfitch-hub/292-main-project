@@ -9,6 +9,10 @@ public class PinkPaint : MonoBehaviour
     [SerializeField] float paintSpeed = 1.0f;
     GameObject crosshair;
     private Rigidbody2D rbody;
+
+    [SerializeField] GameObject SecretWalls;
+    [SerializeField] GameObject Grid;
+    [SerializeField] float raylegnth;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +44,33 @@ public class PinkPaint : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        // Detect Secret Walls Code (Work In progress)
+
+
+    //    if (collision.gameObject.tag == ("SecretGround"))
+    //    {
+    //        GridLayout gridLayout = Grid.GetComponent<GridLayout>();
+    //
+    //       Ray ray = (Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y - .5f, transform.position.z), Vector2.down, raylegnth, LayerMask.GetMask("Ground"));
+    //        RaycastHit hit;
+
+        //    Debug.Log("CollisionHitSecret");
+
+        //    if (Physics.Raycast(ray, out hit))
+        //    {
+        //        Debug.Log("RayHit");
+        //        if (hit.transform.tag == "SecretGround")
+        //        {
+        //            Vector3 p0 = hit.transform.position;
+        //            Vector3Int g0 = gridLayout.WorldToCell(p0);
+        //            SecretWalls.GetComponent<DestrutableTiles>().TileDetector(g0);
+        //            Debug.Log("TileHit");
+
+        //        }
+        //    }
+
+        //}
         if (collision.gameObject.layer == 6)
         {
             Destroy(gameObject);
