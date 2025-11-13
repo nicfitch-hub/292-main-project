@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Player : MonoBehaviour
@@ -35,6 +36,10 @@ public class Player : MonoBehaviour
     private int yKeys = 0;
     private int pAmmo = 50;
     private int gAmmo = 4;
+
+    private int health = 3;
+    [SerializeField] float iFrames = 1.5f;
+    private float damageTimer = 0;
 
 
     // Start is called before the first frame update
@@ -117,6 +122,12 @@ public class Player : MonoBehaviour
                 }
             }
             
+        }
+
+        // Damage Invicibility Timer
+        if (damageTimer > 0)
+        {
+            damageTimer -= Time.deltaTime;
         }
 
         // Shooting code
@@ -254,6 +265,20 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void TakeDamage()
+    {
+        health -= 1;
+        // temp gameover code
+        Debug.Log(health);
+        if (health == 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        // add code to send this info to the UI
+
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
        
@@ -267,6 +292,7 @@ public class Player : MonoBehaviour
             yKeys += 1;
             Debug.Log(yKeys);
         }
+
         
 
     }
@@ -284,6 +310,19 @@ public class Player : MonoBehaviour
                 gAmmo = 4;
             }
             Debug.Log(gAmmo);
+        }
+        if (collision.gameObject.tag == ("Door"))
+        {
+            //Temp "level win" code, just the same as the temp game over code
+            if (Input.GetKey(KeyCode.E) && yKeys == 3) 
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
+        if (collision.gameObject.tag == ("Evil") && damageTimer <= 0)
+        {
+            TakeDamage();
+            damageTimer = iFrames;
         }
     }
 

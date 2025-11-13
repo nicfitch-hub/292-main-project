@@ -12,6 +12,8 @@ TagManager:
   - pPool
   - gPool
   - pShot
+  - Door
+  - Evil
   layers:
   - Default
   - TransparentFX
