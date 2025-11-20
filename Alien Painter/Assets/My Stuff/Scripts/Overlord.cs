@@ -43,8 +43,11 @@ public class Overlord : MonoBehaviour
     }
     public void LoadLvl1()
     {
-        Debug.Log("Loadworked");
         SceneManager.LoadScene("Lvl1");
+    }
+    public void LoadLvl2()
+    {
+        SceneManager.LoadScene("Lvl2");
     }
 
 }

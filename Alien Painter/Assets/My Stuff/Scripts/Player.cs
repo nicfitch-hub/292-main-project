@@ -281,11 +281,20 @@ public class Player : MonoBehaviour
         Debug.Log(health);
         if (health == 0)
         {
+            Destroy(gameObject);
+            //StartCoroutine(WaitAndPerformAction());
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        // add code to send this info to the UI
+    }
 
+    // Waiting code from google (not working rn)
+    IEnumerator WaitAndPerformAction()
+    {
+        Debug.Log("Starting to wait...");
+        yield return new WaitForSeconds(2f); // Wait for 2 seconds
+        Debug.Log("2 seconds have passed! Performing action now.");
+        // Place the code you want to execute after the delay here
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -327,7 +336,7 @@ public class Player : MonoBehaviour
             //Temp "level win" code, just the same as the temp game over code
             if (Input.GetKey(KeyCode.E) && yKeys == 3) 
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene("Menu");
             }
         }
         if (collision.gameObject.tag == ("Evil") && damageTimer <= 0)
