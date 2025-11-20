@@ -27,6 +27,7 @@ public class DestrutableTiles : MonoBehaviour
 
     public void TileKiller(Vector3Int pos)
     {
+        Debug.Log("call");
         GameObject SecWalls = GameObject.FindGameObjectWithTag("SecretGround");
         tilemap = SecWalls.GetComponent<Tilemap>();
         tilemap.SetTile(pos, null);

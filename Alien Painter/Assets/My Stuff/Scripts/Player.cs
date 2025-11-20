@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using TMPro;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Player : MonoBehaviour
@@ -40,6 +42,10 @@ public class Player : MonoBehaviour
     private int health = 3;
     [SerializeField] float iFrames = 1.5f;
     private float damageTimer = 0;
+
+    [SerializeField] TextMeshProUGUI pAmmoUI;
+    [SerializeField] TextMeshProUGUI gAmmoUI;
+    [SerializeField] TextMeshProUGUI healthUI;
 
 
     // Start is called before the first frame update
@@ -138,6 +144,7 @@ public class Player : MonoBehaviour
                 canFire = false;
                 Instantiate(pPaint, firePoint.transform.position, Quaternion.identity);
                 pAmmo -= 1;
+                pAmmoUI.text = "x" + pAmmo.ToString();
                 if (piviotPoint.transform.rotation.eulerAngles.z > 255 && piviotPoint.transform.rotation.eulerAngles.z < 285)
                 {
                     //light impulse and unground
@@ -165,6 +172,7 @@ public class Player : MonoBehaviour
                 canFire = false;
                 Instantiate(gPaint, firePoint.transform.position, Quaternion.identity);
                 gAmmo -= 1;
+                gAmmoUI.text = "x" +gAmmo.ToString();
                 if (piviotPoint.transform.rotation.eulerAngles.z > 255 && piviotPoint.transform.rotation.eulerAngles.z < 285)
                 {
                     //big impulse and unground
@@ -268,6 +276,7 @@ public class Player : MonoBehaviour
     private void TakeDamage()
     {
         health -= 1;
+        healthUI.text = "Health: " + health.ToString();
         // temp gameover code
         Debug.Log(health);
         if (health == 0)
@@ -302,12 +311,14 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == ("pPool"))
         {
             pAmmo = 50;
+            pAmmoUI.text = "x" + pAmmo.ToString();
         }
         else if (collision.gameObject.tag == ("gPool"))
         {
             if (gAmmo < 4)
             {
                 gAmmo = 4;
+                gAmmoUI.text = "x" + gAmmo.ToString();
             }
             Debug.Log(gAmmo);
         }

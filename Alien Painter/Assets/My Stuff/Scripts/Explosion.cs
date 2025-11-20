@@ -11,7 +11,9 @@ public class Explosion : MonoBehaviour
     [SerializeField] float eTime;
     [SerializeField] float scaleFactor;
     [SerializeField] GameObject SecretWalls;
-    [SerializeField] GameObject Grid;
+    
+    Tilemap tilemap;
+    [SerializeField] TileBase tile;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,7 @@ public class Explosion : MonoBehaviour
 
         // Top 10 worst coding experiance BUT IT WORKS BABY LETS GOOOOOOO
 
-        Tilemap desTiles = SecretWalls.GetComponent<Tilemap>();
+        GameObject grid = GameObject.FindGameObjectWithTag("Grid");
 
         Vector3 p0 = transform.position;
         Vector3 p1 = new Vector3 (transform.position.x + 1f, transform.position.y, transform.position.z);
@@ -51,62 +53,63 @@ public class Explosion : MonoBehaviour
         Vector3 p23 = new Vector3(transform.position.x + 1.25f, transform.position.y - 1.25f, transform.position.z);
         Vector3 p24 = new Vector3(transform.position.x - 1.25f, transform.position.y + 1.25f, transform.position.z);
 
-        GridLayout gridLayout = Grid.GetComponent<GridLayout>();
+        GridLayout gridLayout = grid.GetComponent<GridLayout>();
 
         Vector3Int g0 = gridLayout.WorldToCell(p0);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g0);
+        TileKiller(g0);
         Vector3Int g1 = gridLayout.WorldToCell(p1);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g1);
+        TileKiller(g1);
         Vector3Int g2 = gridLayout.WorldToCell(p2);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g2);
+        TileKiller(g2);
         Vector3Int g3 = gridLayout.WorldToCell(p3);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g3);
+        TileKiller(g3);
         Vector3Int g4 = gridLayout.WorldToCell(p4);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g4);
+        TileKiller(g4);
         Vector3Int g5 = gridLayout.WorldToCell(p5);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g5);
+        TileKiller(g5);
         Vector3Int g6 = gridLayout.WorldToCell(p6);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g6);
+        TileKiller(g6);
         Vector3Int g7 = gridLayout.WorldToCell(p7);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g7);
+        TileKiller(g7);
         Vector3Int g8 = gridLayout.WorldToCell(p8);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g8);
+        TileKiller(g8);
         Vector3Int g9 = gridLayout.WorldToCell(p9);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g9);
+        TileKiller(g9);
         Vector3Int g10 = gridLayout.WorldToCell(p10);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g10);
+        TileKiller(g10);
         Vector3Int g11 = gridLayout.WorldToCell(p11);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g11);
+        TileKiller(g11);
         Vector3Int g12 = gridLayout.WorldToCell(p12);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g12);
+        TileKiller(g12);
         Vector3Int g13 = gridLayout.WorldToCell(p13);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g13);
+        TileKiller(g13);
         Vector3Int g14 = gridLayout.WorldToCell(p14);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g14);
+        TileKiller(g14);
         Vector3Int g15 = gridLayout.WorldToCell(p15);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g15);
+        TileKiller(g15);
         Vector3Int g16 = gridLayout.WorldToCell(p16);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g16);
+        TileKiller(g16);
         Vector3Int g17 = gridLayout.WorldToCell(p17);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g17);
+        TileKiller(g17);
         Vector3Int g18 = gridLayout.WorldToCell(p18);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g18);
+        TileKiller(g18);
         Vector3Int g19 = gridLayout.WorldToCell(p19);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g19);
+        TileKiller(g19);
         Vector3Int g20 = gridLayout.WorldToCell(p20);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g20);
+        TileKiller(g20);
         Vector3Int g21= gridLayout.WorldToCell(p21);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g21);
+        TileKiller(g21);
         Vector3Int g22 = gridLayout.WorldToCell(p22);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g22);
+        TileKiller(g22);
         Vector3Int g23 = gridLayout.WorldToCell(p23);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g23);
+        TileKiller(g23);
         Vector3Int g24 = gridLayout.WorldToCell(p24);
-        SecretWalls.GetComponent<DestrutableTiles>().TileKiller(g24);
-        //Debug.Log(p9);
+        TileKiller(g24);
+
+        Debug.Log(p9);
         //Debug.Log(p15);
         //Debug.Log(p24);
-        //Debug.Log(g9);
+        Debug.Log(g9);
         //Debug.Log(g15);
         //Debug.Log(g24);
         //Debug.Log(p0);
@@ -129,4 +132,15 @@ public class Explosion : MonoBehaviour
         }
         
     }
+
+    public void TileKiller(Vector3Int pos)
+    {
+        Debug.Log("call");
+        GameObject SecWalls = GameObject.FindGameObjectWithTag("SecretGround");
+        tilemap = SecWalls.GetComponent<Tilemap>();
+        tilemap.SetTile(pos, null);
+        Debug.Log(pos);
+    }
+
+
 }
