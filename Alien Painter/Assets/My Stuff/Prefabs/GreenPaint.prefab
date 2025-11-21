@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2671373127308953496}
   m_Layer: 0
   m_Name: GreenPaint
-  m_TagString: Explosion
+  m_TagString: gShot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

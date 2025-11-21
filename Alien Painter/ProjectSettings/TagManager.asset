@@ -15,6 +15,7 @@ TagManager:
   - Door
   - Evil
   - Grid
+  - gShot
   layers:
   - Default
   - TransparentFX
