@@ -50,13 +50,13 @@ public class EvilBee : MonoBehaviour
 
 
         //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y - .3f, transform.position.z), Vector2.right * sideRaylegnth, UnityEngine.Color.red);
-        Debug.DrawRay(new Vector3(transform.position.x, transform.position.y - .6f, transform.position.z), Vector2.right * sideRaylegnth, UnityEngine.Color.red);
-        Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + .6f, transform.position.z), Vector2.right * sideRaylegnth, UnityEngine.Color.red);
+        //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y - .6f, transform.position.z), Vector2.right * sideRaylegnth, UnityEngine.Color.red);
+        //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + .6f, transform.position.z), Vector2.right * sideRaylegnth, UnityEngine.Color.red);
 
 
         //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y - .3f, transform.position.z), Vector2.left * sideRaylegnth, UnityEngine.Color.green);
-        Debug.DrawRay(new Vector3(transform.position.x, transform.position.y - .6f, transform.position.z), Vector2.left * sideRaylegnth, UnityEngine.Color.green);
-        Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + .6f, transform.position.z), Vector2.left * sideRaylegnth, UnityEngine.Color.green);
+        //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y - .6f, transform.position.z), Vector2.left * sideRaylegnth, UnityEngine.Color.green);
+        //Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + .6f, transform.position.z), Vector2.left * sideRaylegnth, UnityEngine.Color.green);
 
 
         if (flipTimer <= 0 && Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y - .3f, transform.position.z), Vector2.right, raylegnth, LayerMask.GetMask("Ground")))
