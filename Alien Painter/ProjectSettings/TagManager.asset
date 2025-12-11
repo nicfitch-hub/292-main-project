@@ -16,11 +16,13 @@ TagManager:
   - Evil
   - Grid
   - gShot
+  - PlayerMain
+  - Overlord
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Ground

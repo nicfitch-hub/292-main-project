@@ -18,7 +18,7 @@ public class HiddenWalls : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collide");
-        if (collision.gameObject.tag == ("Player"))
+        if (collision.gameObject.tag == ("Player") || collision.gameObject.tag == ("PlayerMain"))
         {
             Debug.Log("Dying");
             Destroy(gameObject);

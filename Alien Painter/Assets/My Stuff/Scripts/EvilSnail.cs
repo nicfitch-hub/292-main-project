@@ -112,7 +112,7 @@ public class EvilSnail : MonoBehaviour
     private void TakeDamage()
     {
         health -= 1;
-        Debug.Log(health);
+        //Debug.Log(health);
         if (health == 0)
         {
             Destroy(gameObject);

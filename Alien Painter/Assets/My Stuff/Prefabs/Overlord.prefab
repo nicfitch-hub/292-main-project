@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9101059016089558310
+--- !u!1 &7723461976681882322
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6236967614870194204}
-  - component: {fileID: 2489136829190062808}
+  - component: {fileID: 9172810208482172193}
+  - component: {fileID: 7379173056008680033}
   m_Layer: 0
   m_Name: Overlord
-  m_TagString: Untagged
+  m_TagString: Overlord
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6236967614870194204
+--- !u!4 &9172810208482172193
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9101059016089558310}
+  m_GameObject: {fileID: 7723461976681882322}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.14, y: 4.63, z: 6.0367665}
@@ -32,15 +32,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2489136829190062808
+--- !u!114 &7379173056008680033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9101059016089558310}
+  m_GameObject: {fileID: 7723461976681882322}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6449da56c92cb8428c5156ac126309c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lvl2Unlock:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5859092138986219356, guid: 0f42a707ee149bc43af97d520ef73ed7, type: 3}
+        m_TargetAssemblyTypeName: Lvl2Lock, Assembly-CSharp
+        m_MethodName: Unlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  lvl3Unlock:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6700548831245946627, guid: ee111227eaacc7e4884dbcdc341db069, type: 3}
+        m_TargetAssemblyTypeName: Lvl3Lock, Assembly-CSharp
+        m_MethodName: Unlock3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  lvl4Unlock:
+    m_PersistentCalls:
+      m_Calls: []

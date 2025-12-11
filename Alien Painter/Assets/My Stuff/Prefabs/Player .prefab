@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 7645984616663376616}
   - component: {fileID: 4673080927290044664}
   - component: {fileID: 1160620530532302832}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'Player '
-  m_TagString: Player
+  m_TagString: PlayerMain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,6 +186,55 @@ MonoBehaviour:
   piviotPoint: {fileID: 4170276469732207337}
   timeBetweenShots: 0.1
   gTimeBetweenShots: 1
+  iFrames: 1.5
+  pAmmoUI: {fileID: 0}
+  gAmmoUI: {fileID: 0}
+  healthUI: {fileID: 0}
+  lvl1Win:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7379173056008680033, guid: b5f06c19f52d0fd44b2991d4fccb8111, type: 3}
+        m_TargetAssemblyTypeName: Overlord, Assembly-CSharp
+        m_MethodName: Lvl1Won
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  lvl2Win:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7379173056008680033, guid: b5f06c19f52d0fd44b2991d4fccb8111, type: 3}
+        m_TargetAssemblyTypeName: Overlord, Assembly-CSharp
+        m_MethodName: Lvl2Won
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  lvl3Win:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7379173056008680033, guid: b5f06c19f52d0fd44b2991d4fccb8111, type: 3}
+        m_TargetAssemblyTypeName: Overlord, Assembly-CSharp
+        m_MethodName: Lvl3Won
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!61 &1160620530532302832
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -241,7 +290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7173855370740665421}
   - component: {fileID: 3817965530514153151}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BlasterPivotPoint
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -286,7 +335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8480155943790518020}
   - component: {fileID: 8837792807071268904}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FirePoint
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -374,6 +423,10 @@ PrefabInstance:
       value: Crossheir
       objectReference: {fileID: 0}
     - target: {fileID: 758073491925976246, guid: 686a91b9ba8a8f34eafd8f84a3b25e0a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 758073491925976246, guid: 686a91b9ba8a8f34eafd8f84a3b25e0a, type: 3}
       propertyPath: m_TagString
       value: Crosshair
       objectReference: {fileID: 0}
@@ -442,6 +495,10 @@ PrefabInstance:
     - target: {fileID: 7708551378945570964, guid: 12a3356fea3bdfd4a9ae2d12142fac9d, type: 3}
       propertyPath: m_Name
       value: Blaster
+      objectReference: {fileID: 0}
+    - target: {fileID: 7708551378945570964, guid: 12a3356fea3bdfd4a9ae2d12142fac9d, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7708551378945570964, guid: 12a3356fea3bdfd4a9ae2d12142fac9d, type: 3}
       propertyPath: m_TagString

@@ -4,6 +4,7 @@ using System.Drawing;
 using TMPro;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 using static UnityEngine.RuleTile.TilingRuleOutput;
@@ -47,6 +48,9 @@ public class Player : MonoBehaviour
     [SerializeField] TextMeshProUGUI gAmmoUI;
     [SerializeField] TextMeshProUGUI healthUI;
 
+    public UnityEvent lvl1Win;
+    public UnityEvent lvl2Win;
+    public UnityEvent lvl3Win;
 
     // Start is called before the first frame update
     void Start()
@@ -333,10 +337,33 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.tag == ("Door"))
         {
-            //Temp "level win" code, just the same as the temp game over code
             if (Input.GetKey(KeyCode.E) && yKeys == 3) 
             {
-                SceneManager.LoadScene("Menu");
+                Scene currentScene = SceneManager.GetActiveScene();
+                string thisLvl = currentScene.name;
+                if (thisLvl == "Lvl1")
+                {
+                    lvl1Win.Invoke();
+                    Debug.Log("Lvl1Sent");
+                }
+                else if (thisLvl == "Lvl2")
+                {
+                    lvl2Win.Invoke();
+                }
+                else if (thisLvl == "Lvl3")
+                {
+                    lvl3Win.Invoke();
+                }
+
+                if (thisLvl == "Lvl3")
+                {
+                    SceneManager.LoadScene("GameEnd");
+                }
+                else
+                {
+                    SceneManager.LoadScene("Menu");
+                }
+                    
             }
         }
         if (collision.gameObject.tag == ("Evil") && damageTimer <= 0)

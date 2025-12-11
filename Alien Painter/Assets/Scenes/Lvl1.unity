@@ -1159,7 +1159,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.966335, y: 2.3769054, z: -10}
+  m_LocalPosition: {x: 2.9539812, y: 2.3768845, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1591,7 +1591,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2489136829190062808, guid: b5f06c19f52d0fd44b2991d4fccb8111, type: 3}
+      - m_Target: {fileID: 7379173056008680033, guid: b5f06c19f52d0fd44b2991d4fccb8111, type: 3}
         m_TargetAssemblyTypeName: Overlord, Assembly-CSharp
         m_MethodName: LoadMenu
         m_Mode: 1
@@ -3625,7 +3625,8 @@ PrefabInstance:
       value: Grid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 611608159970982937, guid: d4815d43a304e5c4aa0881b17858c9de, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1259362592874061108, guid: d4815d43a304e5c4aa0881b17858c9de, type: 3}
       insertIndex: -1
