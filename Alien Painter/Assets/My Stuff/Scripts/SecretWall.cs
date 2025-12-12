@@ -18,13 +18,12 @@ public class SecretWall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-            if (collision.gameObject.tag == ("Explosion"))
-            {
-                Debug.Log("Ex Hit");
-                Destroy(gameObject);
-
-            }
+        Debug.Log("Ping");
+       if (collision.gameObject.tag == ("pShot"))
+       {
+            Debug.Log("pHit");
+            Destroy(gameObject);
+       }
 
         
     }
