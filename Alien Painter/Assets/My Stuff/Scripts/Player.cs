@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
 
     public UnityEvent rKey1Found;
     public UnityEvent rKey2Found;
+    public UnityEvent updateKeys;
 
     // Start is called before the first frame update
     void Start()
@@ -320,13 +321,15 @@ public class Player : MonoBehaviour
             yKeys += 1;
             Debug.Log(yKeys);
         }
-        if (collision.gameObject.tag == ("redKey1"))
+        if (collision.gameObject.tag == ("RedKey1"))
         {
             rKey1Found.Invoke();
+            Destroy(collision.gameObject);
         }
-        if (collision.gameObject.tag == ("redKey2"))
+        if (collision.gameObject.tag == ("RedKey2"))
         {
             rKey2Found.Invoke();
+            Destroy(collision.gameObject);
         }
 
 
@@ -353,6 +356,7 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E) && yKeys == 3) 
             {
+                updateKeys.Invoke();
                 Scene currentScene = SceneManager.GetActiveScene();
                 string thisLvl = currentScene.name;
                 if (thisLvl == "Lvl1")

@@ -18,6 +18,8 @@ TagManager:
   - gShot
   - PlayerMain
   - Overlord
+  - RedKey1
+  - RedKey2
   layers:
   - Default
   - TransparentFX

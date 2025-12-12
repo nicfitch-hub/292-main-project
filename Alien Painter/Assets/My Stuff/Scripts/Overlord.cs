@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -33,6 +34,7 @@ public class Overlord : MonoBehaviour
     private bool key12 = false;
     
     private int totalKeys = 0;
+    [SerializeField] TextMeshProUGUI keyCount;
 
     // code from google \/
     void Awake()
@@ -66,6 +68,86 @@ public class Overlord : MonoBehaviour
     {
         
     } 
+
+    public void RedKey1()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string thisLvl = currentScene.name;
+        if (thisLvl == "Lvl1")
+        {
+            key1 = true;
+        }
+        else if (thisLvl == "Lvl2")
+        {
+            key3 = true;
+        }
+        else if (thisLvl == "Lvl3")
+        {
+            key5 = true;
+        }
+        else if (thisLvl == "Lvl4")
+        {
+            key7 = true;
+        }
+        else if (thisLvl == "Lvl5")
+        {
+            key9 = true;
+        }
+        else if (thisLvl == "Lvl6")
+        {
+            key11 = true;
+        }
+    }
+
+    public void RedKey2()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string thisLvl = currentScene.name;
+        if (thisLvl == "Lvl1")
+        {
+            key2 = true;
+        }
+        else if (thisLvl == "Lvl2")
+        {
+            key4 = true;
+        }
+        else if (thisLvl == "Lvl3")
+        {
+            key6 = true;
+        }
+        else if (thisLvl == "Lvl4")
+        {
+            key8 = true;
+        }
+        else if (thisLvl == "Lvl5")
+        {
+            key10 = true;
+        }
+        else if (thisLvl == "Lvl6")
+        {
+            key12 = true;
+        }
+    }
+
+    // I know for a fact I could do a recursion thing here if I put the keys in a list
+    // but I don't have the time right now to remeber how lists work
+    public void KeyUpdate()
+    {
+        totalKeys = 0;
+        if (key1) {totalKeys++;}
+        if (key2) { totalKeys++; }
+        if (key3) { totalKeys++; }
+        if (key4) { totalKeys++; }
+        if (key5) { totalKeys++; }
+        if (key6) { totalKeys++; }
+        if (key7) { totalKeys++; }
+        if (key8) { totalKeys++; }
+        if (key9) { totalKeys++; }
+        if (key10) { totalKeys++; }
+        if (key11) { totalKeys++; }
+        if (key12) { totalKeys++; }
+        keyCount.text = totalKeys.ToString() + "/12";
+    }
 
 
 
