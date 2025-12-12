@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,22 @@ public class Overlord : MonoBehaviour
     public UnityEvent lvl2Unlock;
     public UnityEvent lvl3Unlock;
     public UnityEvent lvl4Unlock;
+
+
+    private bool key1 = false;
+    private bool key2 = false;
+    private bool key3 = false;
+    private bool key4 = false;
+    private bool key5 = false;
+    private bool key6 = false;
+    private bool key7 = false;
+    private bool key8 = false;
+    private bool key9 = false;
+    private bool key10 = false;
+    private bool key11 = false;
+    private bool key12 = false;
+    
+    private int totalKeys = 0;
 
     // code from google \/
     void Awake()

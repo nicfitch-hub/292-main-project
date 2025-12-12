@@ -48,9 +48,15 @@ public class Player : MonoBehaviour
     [SerializeField] TextMeshProUGUI gAmmoUI;
     [SerializeField] TextMeshProUGUI healthUI;
 
+    private bool rKey1 = false;
+    private bool rKey2 = false;
+
     public UnityEvent lvl1Win;
     public UnityEvent lvl2Win;
     public UnityEvent lvl3Win;
+
+    public UnityEvent rKey1Found;
+    public UnityEvent rKey2Found;
 
     // Start is called before the first frame update
     void Start()
@@ -314,8 +320,16 @@ public class Player : MonoBehaviour
             yKeys += 1;
             Debug.Log(yKeys);
         }
+        if (collision.gameObject.tag == ("redKey1"))
+        {
+            rKey1Found.Invoke();
+        }
+        if (collision.gameObject.tag == ("redKey2"))
+        {
+            rKey2Found.Invoke();
+        }
 
-        
+
 
     }
 
