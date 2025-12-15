@@ -18,6 +18,9 @@ public class Overlord : MonoBehaviour
     public UnityEvent lvl2Unlock;
     public UnityEvent lvl3Unlock;
     public UnityEvent lvl4Unlock;
+    public UnityEvent lvl5Unlock;
+    public UnityEvent lvl6Unlock;
+    public UnityEvent lvlBonusUnlock;
 
 
     private bool key1 = false;
@@ -32,7 +35,11 @@ public class Overlord : MonoBehaviour
     private bool key10 = false;
     private bool key11 = false;
     private bool key12 = false;
-    
+
+    private bool key13 = false;
+    private bool key14 = false;
+
+
     private int totalKeys = 0;
     [SerializeField] TextMeshProUGUI keyCount;
 
@@ -97,6 +104,10 @@ public class Overlord : MonoBehaviour
         {
             key11 = true;
         }
+        else if (thisLvl == "LvlBonus")
+        {
+            key13 = true;
+        }
     }
 
     public void RedKey2()
@@ -127,6 +138,10 @@ public class Overlord : MonoBehaviour
         {
             key12 = true;
         }
+        else if (thisLvl == "LvlBonus")
+        {
+            key14 = true;
+        }
     }
 
     // I know for a fact I could do a recursion thing here if I put the keys in a list
@@ -146,7 +161,13 @@ public class Overlord : MonoBehaviour
         if (key10) { totalKeys++; }
         if (key11) { totalKeys++; }
         if (key12) { totalKeys++; }
+        if (key13) { totalKeys++; }
+        if (key14) { totalKeys++; }
         keyCount.text = totalKeys.ToString() + "/12";
+        if (totalKeys == 12)
+        {
+            lvlBonusUnlock.Invoke();
+        }
     }
 
 
@@ -167,6 +188,22 @@ public class Overlord : MonoBehaviour
     {
         SceneManager.LoadScene("Lvl3");
     }
+    public void LoadLvl4()
+    {
+        SceneManager.LoadScene("Lvl4");
+    }
+    public void LoadLvl5()
+    {
+        SceneManager.LoadScene("Lvl5");
+    }
+    public void LoadLvl6()
+    {
+        SceneManager.LoadScene("Lvl6");
+    }
+    public void LoadLvlBonus()
+    {
+        SceneManager.LoadScene("LvlBonus");
+    }
 
 
     public void Lvl1Won()
@@ -181,6 +218,15 @@ public class Overlord : MonoBehaviour
     {
         lvl4Unlock.Invoke();
     }
+    public void Lvl4Won()
+    {
+        lvl5Unlock.Invoke();
+    }
+    public void Lvl5Won()
+    {
+        lvl6Unlock.Invoke();
+    }
+    
 
     public void CheckLvl1()
     {
@@ -201,6 +247,22 @@ public class Overlord : MonoBehaviour
         }
     }
     public void CheckLvl3()
+    {
+
+        if (lvl3 == true)
+        {
+            lvl4Unlock.Invoke();
+        }
+    }
+    public void CheckLvl4()
+    {
+
+        if (lvl2 == true)
+        {
+            lvl3Unlock.Invoke();
+        }
+    }
+    public void CheckLvl5()
     {
 
         if (lvl3 == true)

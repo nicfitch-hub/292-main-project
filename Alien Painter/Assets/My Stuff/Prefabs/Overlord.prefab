@@ -76,5 +76,62 @@ MonoBehaviour:
         m_CallState: 2
   lvl4Unlock:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1993195254740265212, guid: 45a09e9496aebf3439998c4aa8eba308, type: 3}
+        m_TargetAssemblyTypeName: Lvl4Lock, Assembly-CSharp
+        m_MethodName: Unlock4
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  lvl5Unlock:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5802875746814926173, guid: adcf9ce1ddc8d6243b4977ac1971a0c9, type: 3}
+        m_TargetAssemblyTypeName: Lvl5Lock, Assembly-CSharp
+        m_MethodName: Unlock5
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  lvl6Unlock:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -1153755616914989556, guid: 2702ae7a017caf54f8a3c5b569fb15e0, type: 3}
+        m_TargetAssemblyTypeName: Lvl6Lock, Assembly-CSharp
+        m_MethodName: Unlock6
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  lvlBonusUnlock:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1177433432305179934, guid: 46cf34d800bcd66418a8ab965ebb369f, type: 3}
+        m_TargetAssemblyTypeName: LvlBonusLock, Assembly-CSharp
+        m_MethodName: UnlockBonus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   keyCount: {fileID: 11431227043706765, guid: b73f9163076fa18418945bc6ac0aebf2, type: 3}

@@ -54,6 +54,8 @@ public class Player : MonoBehaviour
     public UnityEvent lvl1Win;
     public UnityEvent lvl2Win;
     public UnityEvent lvl3Win;
+    public UnityEvent lvl4Win;
+    public UnityEvent lvl5Win;
 
     public UnityEvent rKey1Found;
     public UnityEvent rKey2Found;
@@ -372,8 +374,17 @@ public class Player : MonoBehaviour
                 {
                     lvl3Win.Invoke();
                 }
+                else if (thisLvl == "Lvl4")
+                {
+                    lvl4Win.Invoke();
+                }
+                else if (thisLvl == "Lvl5")
+                {
+                    lvl5Win.Invoke();
+                }
+                
 
-                if (thisLvl == "Lvl3")
+                if (thisLvl == "Lvl6")
                 {
                     SceneManager.LoadScene("GameEnd");
                 }
